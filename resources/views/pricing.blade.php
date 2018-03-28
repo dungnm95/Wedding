@@ -19,7 +19,7 @@
                         <h3>Single Theme</h3><div class="theme-price">
                             <section class="price">
                                 <aside class="small-text">from</aside>
-                                <span>$</span>30
+                                <span>VND</span>30.000.000
                             </section>
                             <span class="small-text">one-off payment</span>
                         </div>
@@ -38,7 +38,7 @@
                     <article class="col-md-4">
 
                         <h3>1 Year Membership</h3><div class="theme-price">
-                            <section class="price"><aside class="small-text">Most Popular</aside><span>$</span>69</section>
+                            <section class="price"><aside class="small-text">Most Popular</aside><span>VND</span>1.900.000</section>
                             <span class="small-text">Billed annually</span>
                         </div>
                         <ul>
@@ -55,7 +55,7 @@
                     </article>
                     <article class="col-md-4">
                         <h3>Lifetime Membership</h3><div class="theme-price">
-                            <section class="price"><span>$</span>247</section>
+                            <section class="price"><span>VND</span>2.470.000</section>
                             <span class="small-text">one-off payment</span>
                         </div>
                         <ul>

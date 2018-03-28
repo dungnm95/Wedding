@@ -176,7 +176,7 @@ and open the template in the editor.
     font-weight: 200;
     line-height: 1;
     position: relative;
-    font-size: 10em;
+    font-size: 55px;
 }
 
 .pricing-block .price aside {
@@ -201,7 +201,7 @@ and open the template in the editor.
     vertical-align: top;
     position: absolute;
     top: 15px;
-    left: -30px;
+    left: -40px;
     font-size: 0.4em;
 }
 

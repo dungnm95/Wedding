@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('contend')
+<link rel="stylesheet" href="/css/common.css" type="text/css">
 <section id="main" class="sly">
     <div class="main-container  ">
         <div class="full_width_row   " style=" background-color:#f5f5f5 ">

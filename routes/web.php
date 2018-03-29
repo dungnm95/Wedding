@@ -60,4 +60,8 @@ Route::group(['prefix' => 'backend', 'namespace' => 'backend'], function($backen
     
     $backend->get('/orders', 'PageController@backend_list_order');
     $backend->get('/orders/edit/{id}', 'PageController@backend_edit_order')->where('id', '[0-9]+');
+    
+    $backend->get('/contacts', 'PageController@backend_list_contact');
+    $backend->get('/contacts/view/{id}', 'PageController@backend_view_contact')->where('id', '[0-9]+');
+    
 });

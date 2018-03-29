@@ -66,4 +66,12 @@ class PageController extends Controller {
         return view('backend.edit_order');
     }
 
+    public function backend_list_contact() {
+        return view('backend.list_contact');
+    }
+
+    public function backend_view_contact($id) {
+        return view('backend.view_contact');
+    }
+
 }

@@ -325,11 +325,25 @@ class PageController extends Controller {
                 'time' => time()
             ]);
         }
-        return view('backend.edit_news');
+        return view('backend.edit_news')->with($data);
     }
 
     public function backend_delete_news($id, Request $request) {
-        
+        if ($request->isMethod('post')) {
+            $news = News::infoNews($id);
+            if ($news) {
+                News::deleteNews($id);
+                Admin::add_log([
+                    'admin_id' => $request->session()->get('admin_id'),
+                    'admin_username' => $request->session()->get('username'),
+                    'action' => 'Xóa news mới ID = ' . $id,
+                    'time' => time()
+                ]);
+                return json_encode(['success' => true, 'message' => 'Xóa news thành công']);
+            } else {
+                return json_encode(['success' => false, 'message' => 'Không tìm thấy news muốn xóa']);
+            }
+        }
     }
 
     public function backend_list_order() {

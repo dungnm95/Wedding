@@ -53,7 +53,7 @@
                                     <td>{{$new->admin_created}}</td>
                                     <td>{{date('d/m/Y H:i:s', $new->created_time)}}</td>
                                     <td>
-                                        <a class="pull-left" href="/backend/services/edit/{{$new->id}}"> <i class="fa fa-edit"></i> Sửa</a>
+                                        <a class="pull-left" href="/backend/news/edit/{{$new->id}}"> <i class="fa fa-edit"></i> Sửa</a>
                                         <a class="pull-right" href="#" onclick="remove_item({{$new->id}})" id="remove_{{$new->id}}"><i class="fa fa-remove"></i> Xóa</a>
                                     </td>
                                 </tr>

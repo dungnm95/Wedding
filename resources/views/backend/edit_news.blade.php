@@ -22,17 +22,17 @@
                 <div class="box box-info">
                     <div class="box-body pad">
                         @if(!empty($message))
-                    @if($success)
+                    @if($message['success'])
                     <div class="callout callout-info">
                         <h4>Success</h4>
 
-                        <p>{{$message}}</p>
+                        <p>{{$message['message']}}</p>
                     </div>
                     @else
                     <div class="callout callout-danger">
                         <h4>Error!</h4>
 
-                        <p>{{$message}}</p>
+                        <p>{{$message['message']}}</p>
                     </div>
                     @endif
                     @endif
@@ -40,26 +40,27 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
-                                <input type="text" class="form-control" id="title" required name="title">
+                                <input type="text" class="form-control" id="title" value="{{$news->title}}" name="title">
                             </div>
                             <div class="form-group">
                                 <label for="img">Ảnh minh họa</label>
-                                <input type="file" id="img" required name="img">
+                               <br/><img src="/{{$news->img}}" width="250" style="margin: 10px 0;"/>
+                                <input type="file" id="img" name="img">
                             </div>
                             <div class="form-group">
                                 <label>Tin hot?</label>
                                 <select class="form-control" name="is_hot" style="width: 20%">
-                                    <option value="no">Không</option>
-                                    <option value="yes">Có</option>
+                                    <option value="no" {{($news->is_hot == 'no')?'selected':''}}>Không</option>
+                                    <option value="yes" {{($news->is_hot == 'yes')?'selected':''}}>Có</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="description">Mô tả</label>
-                                <textarea class="form-control" rows="5" name="pre_content" id="description"></textarea>
+                                <textarea class="form-control" rows="5" name="pre_content" id="description">{{$news->pre_content}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Content</label>
-                                <textarea id="editor1" name="content" rows="10" cols="80"></textarea>
+                                <textarea id="editor1" name="content" rows="10" cols="80">{{$news->content}}</textarea>
                             </div>
                             
                         <div class="box-footer">

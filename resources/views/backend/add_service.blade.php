@@ -4,13 +4,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            General Form Elements
-            <small>Preview</small>
+            Services
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
+            <li><a href="/backend"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/backend/services">Services</a></li>
+            <li class="active">Tạo mới</li>
         </ol>
     </section>
 
@@ -21,46 +20,54 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Quick Example</h3>
+                        <h3 class="box-title">Tạo service mới</h3>
                     </div>
                     <!-- /.box-header -->
+                    @if(!empty($message))
+                    @if($success)
+                    <div class="callout callout-info">
+                        <h4>Success</h4>
+
+                        <p>{{$message}}</p>
+                    </div>
+                    @else
+                    <div class="callout callout-danger">
+                        <h4>Error!</h4>
+
+                        <p>{{$message}}</p>
+                    </div>
+                    @endif
+                    @endif
                     <!-- form start -->
-                    <form role="form">
+                    <form role="form" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                <label for="name">Tên</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <label for="img">Ảnh mô tả</label>
+                                <input type="file" id="img" name="img">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">File input</label>
-                                <input type="file" id="exampleInputFile">
+                                <label for="price">Giá thành</label>
+                                <input type="text" class="form-control" id="price" name="price" required>
+                            </div>
 
-                                <p class="help-block">Example block-level help text here.</p>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Check me out
-                                </label>
-                            </div>
                             <div class="form-group">
-                                <label>Select</label>
-                                <select class="form-control">
-                                    <option>option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
+                                <label>Hot service?</label>
+                                <select class="form-control" name="is_hot" style="width: 20%">
+                                    <option value="no">Không</option>
+                                    <option value="yes">Có</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Textarea</label>
-                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                <label for="description">Mô tả</label>
+                                <textarea class="form-control" rows="5" name="description" id="description"></textarea>
                             </div>
                         </div>
+
 
                         <!-- /.box-body -->
 
@@ -69,13 +76,20 @@
                         </div>
                     </form>
                 </div>
-                <!-- /.box -->
-
-
             </div>
+            <!-- /.box -->
+
+
         </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
 </div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
+</div>
+<style>
+    .album_detail_row
+    {
+        margin-top: 15px;
+    }
+</style>
 @endsection

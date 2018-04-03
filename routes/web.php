@@ -37,29 +37,32 @@ Route::get('services', function () {
 });
 Route::post('order', 'ServiceController@create_order');
 
-Route::group(['prefix' => 'backend', 'namespace' => 'backend'], function($backend){
+Route::group(['middleware' => 'web','prefix' => 'backend', 'namespace' => 'backend'], function($backend){
     $backend->get('/', 'PageController@index');
     
     $backend->get('/login', 'AdminController@login');
     $backend->get('/register', 'AdminController@register');
+    $backend->post('/create_account', 'AdminController@create_account');
+    $backend->post('/check_login', 'AdminController@check_login');
+    $backend->post('/check_log', 'AdminController@check_log');
     
     $backend->get('/albums', 'PageController@backend_list_album');
-    $backend->get('/albums/add', 'PageController@backend_add_album');
-    $backend->get('/albums/edit/{id}', 'PageController@backend_edit_album')->where('id', '[0-9]+');
+    $backend->any('/albums/add', 'PageController@backend_add_album');
+    $backend->any('/albums/edit/{id}', 'PageController@backend_edit_album')->where('id', '[0-9]+');
     $backend->post('/albums/delete/{id}', 'PageController@backend_delete_album')->where('id', '[0-9]+');
     
     $backend->get('/services', 'PageController@backend_list_service');
-    $backend->get('/services/add', 'PageController@backend_add_service');
-    $backend->get('/services/edit/{id}', 'PageController@backend_edit_service')->where('id', '[0-9]+');
+    $backend->any('/services/add', 'PageController@backend_add_service');
+    $backend->any('/services/edit/{id}', 'PageController@backend_edit_service')->where('id', '[0-9]+');
     $backend->post('/services/delete/{id}', 'PageController@backend_delete_service')->where('id', '[0-9]+');
     
     $backend->get('/news', 'PageController@backend_list_news');
-    $backend->get('/news/add', 'PageController@backend_add_news');
-    $backend->get('/news/edit/{id}', 'PageController@backend_edit_news')->where('id', '[0-9]+');
+    $backend->any('/news/add', 'PageController@backend_add_news');
+    $backend->any('/news/edit/{id}', 'PageController@backend_edit_news')->where('id', '[0-9]+');
     $backend->post('/news/delete/{id}', 'PageController@backend_delete_news')->where('id', '[0-9]+');
     
     $backend->get('/orders', 'PageController@backend_list_order');
-    $backend->get('/orders/edit/{id}', 'PageController@backend_edit_order')->where('id', '[0-9]+');
+    $backend->any('/orders/edit/{id}', 'PageController@backend_edit_order')->where('id', '[0-9]+');
     
     $backend->get('/contacts', 'PageController@backend_list_contact');
     $backend->get('/contacts/view/{id}', 'PageController@backend_view_contact')->where('id', '[0-9]+');

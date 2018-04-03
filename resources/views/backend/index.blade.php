@@ -52,21 +52,18 @@
                 <div class="nav-tabs-custom">
                     <!-- Tabs within a box -->
                     <ul class="nav nav-tabs pull-right">
-                        <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-                        <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
                         <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
                     </ul>
                     <div class="tab-content no-padding">
                         <!-- Morris chart - Sales -->
                         <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-                        <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
                     </div>
                 </div>
                 <!-- /.nav-tabs-custom -->
                 <!-- TO DO List -->
                 <div class="box box-primary">
                     <div class="box-header">
-                        <i class="fa fa-cart-arrow-plus"></i>
+                        <i class="fa fa-cart-plus"></i>
 
                         <h3 class="box-title">Orders List</h3>
 
@@ -159,41 +156,12 @@
                         <div class="box-tools pull-right">
                             <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                            </button>
                         </div>
                     </div>
                     <div class="box-body border-radius-none">
                         <div class="chart" id="line-chart" style="height: 250px;"></div>
                     </div>
                     <!-- /.box-body -->
-                    <div class="box-footer no-border">
-                        <div class="row">
-                            <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                                <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
-                                       data-fgColor="#39CCCC">
-
-                                <div class="knob-label">Mail-Orders</div>
-                            </div>
-                            <!-- ./col -->
-                            <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                                <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
-                                       data-fgColor="#39CCCC">
-
-                                <div class="knob-label">Online</div>
-                            </div>
-                            <!-- ./col -->
-                            <div class="col-xs-4 text-center">
-                                <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
-                                       data-fgColor="#39CCCC">
-
-                                <div class="knob-label">In-Store</div>
-                            </div>
-                            <!-- ./col -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.box-footer -->
                 </div>
                 <!-- /.box -->
 
@@ -202,20 +170,12 @@
                     <div class="box-header">
                         <i class="fa fa-comments-o"></i>
 
-                        <h3 class="box-title">Chat</h3>
-
-                        <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
-                            <div class="btn-group" data-toggle="btn-toggle">
-                                <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
-                            </div>
-                        </div>
+                        <h3 class="box-title">Contact</h3>
                     </div>
                     <div class="box-body chat" id="chat-box">
                         <!-- chat item -->
                         <div class="item">
-                            <img src="/img/user4-128x128.jpg" alt="user image" class="online">
+                            <img src="/img/chat_avar.png" alt="user image" class="online">
 
                             <p class="message">
                                 <a href="#" class="name">
@@ -230,7 +190,7 @@
                         <!-- /.item -->
                         <!-- chat item -->
                         <div class="item">
-                            <img src="/img/user3-128x128.jpg" alt="user image" class="offline">
+                            <img src="/img/chat_avar.png" alt="user image" class="online">
 
                             <p class="message">
                                 <a href="#" class="name">
@@ -245,7 +205,7 @@
                         <!-- /.item -->
                         <!-- chat item -->
                         <div class="item">
-                            <img src="/img/user2-160x160.jpg" alt="user image" class="offline">
+                            <img src="/img/chat_avar.png" alt="user image" class="online">
 
                             <p class="message">
                                 <a href="#" class="name">

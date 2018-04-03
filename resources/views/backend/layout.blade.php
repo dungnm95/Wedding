@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="/css/daterangepicker.css">
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="/css/bootstrap3-wysihtml5.min.css">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- jQuery 3 -->
         <script src="/js/jquery.min_1.js"></script>

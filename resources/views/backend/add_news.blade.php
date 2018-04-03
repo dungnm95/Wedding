@@ -6,13 +6,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Text Editors
-            <small>Advanced form element</small>
+            News
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">Editors</li>
+            <li><a href="/backend"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/backend/news">News</a></li>
+            <li class="active">Tạo mới</li>
         </ol>
     </section>
 
@@ -22,41 +21,45 @@
             <div class="col-md-12">
                 <div class="box box-info">
                     <div class="box-body pad">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">File input</label>
-                                <input type="file" id="exampleInputFile">
+                        @if(!empty($message))
+                    @if($success)
+                    <div class="callout callout-info">
+                        <h4>Success</h4>
 
-                                <p class="help-block">Example block-level help text here.</p>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Check me out
-                                </label>
+                        <p>{{$message}}</p>
+                    </div>
+                    @else
+                    <div class="callout callout-danger">
+                        <h4>Error!</h4>
+
+                        <p>{{$message}}</p>
+                    </div>
+                    @endif
+                    @endif
+                        <form role="form" method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="title">Tiêu đề</label>
+                                <input type="text" class="form-control" id="title" required name="title">
                             </div>
                             <div class="form-group">
-                                <label>Select</label>
-                                <select class="form-control">
-                                    <option>option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
+                                <label for="img">Ảnh minh họa</label>
+                                <input type="file" id="img" required name="img">
+                            </div>
+                            <div class="form-group">
+                                <label>Tin hot?</label>
+                                <select class="form-control" name="is_hot" style="width: 20%">
+                                    <option value="no">Không</option>
+                                    <option value="yes">Có</option>
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="description">Mô tả</label>
+                                <textarea class="form-control" rows="5" name="pre_content" id="description"></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label>Content</label>
-                                <textarea id="editor1" name="editor1" rows="10" cols="80">
-                                            This is my textarea to be replaced with CKEditor.
-                                </textarea>
+                                <textarea id="editor1" name="content" rows="10" cols="80"></textarea>
                             </div>
                             
                         <div class="box-footer">

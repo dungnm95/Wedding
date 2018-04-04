@@ -12,7 +12,7 @@
             <div class="row element row_id_logo_big ">
                 <div class="logo align-center two columns"> 
                     <div class="align-middle" style="margin-top: 5.5px;">
-                        <a style="width:130px" href="home_wedding.html">
+                        <a style="width:130px" href="/">
                             <img alt="Tripod Fixed" width="130" src="imgs/logo.png">
                         </a>
                     </div>
@@ -29,7 +29,7 @@
                         <nav class="main-menu cosmo-menu align-middle" style="margin-top: 19px;">
                             <ul id="menu-main-menu" class="mobile-menu">
                                 <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description">
-                                    <a href="home_wedding.html">Trang Chủ</a>
+                                    <a href="/">Trang Chủ</a>
                                 </li>
                                 <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
                                 <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing/*') || Request::is('choose_package/*') || Request::is('services'))? 'selected':''}} menu-item-180  no_description"><a href="/services">Dịch vụ</a></li>
@@ -42,7 +42,7 @@
                     <nav class="main-menu cosmo-menu align-middle" style="margin-top: 1px;">
                         <ul id="menu-main-menu-1" class="sf-menu sf-js-enabled">
                             <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description">
-                                <a href="home_wedding.html">Trang Chủ</a>
+                                <a href="/">Trang Chủ</a>
                             </li>
                             <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
                             <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing/*') || Request::is('choose_package/*') || Request::is('services'))? 'selected':''}} menu-item-180  no_description"><a href="/services">Dịch vụ</a></li>
@@ -85,7 +85,7 @@
         <div class="row element row_id_logo_big ">
             <div class="logo align-left two columns"> 
                 <div class="align-top">
-                    <a style="width:130px" href="home_wedding.html">
+                    <a style="width:130px" href="/">
                         <img alt="Tripod Fixed" width="130" src="/imgs/logo.png">
                     </a>
                 </div>
@@ -100,7 +100,7 @@
                     <nav class="main-menu cosmo-menu align-middle" style="margin-top: 19px;">
                         <ul id="menu-main-menu" class="mobile-menu">
                             <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description">
-                                <a href="home_wedding.html">Trang Chủ</a>
+                                <a href="/">Trang Chủ</a>
                             </li>
                             <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
                             <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing/*') || Request::is('choose_package/*') || Request::is('services'))? 'selected':''}} menu-item-180  no_description"><a href="/services">Dịch vụ</a></li>
@@ -113,7 +113,7 @@
                 <nav class="main-menu cosmo-menu align-middle" style="margin-top: 1px;">
                     <ul id="menu-main-menu-1" class="sf-menu sf-js-enabled">
                         <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description">
-                            <a href="home_wedding.html">Trang Chủ</a>
+                            <a href="/">Trang Chủ</a>
                         </li>
                         <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
                         <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing/*') || Request::is('choose_package/*') || Request::is('services'))? 'selected':''}} menu-item-180  no_description"><a href="/services">Dịch vụ</a></li>

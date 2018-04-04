@@ -26,6 +26,9 @@
             <li class="{{(strpos(Route::getFacadeRoot()->current()->uri(),'backend/services') !== false)?'active':''}}">
                 <a href="/backend/services"><i class="fa fa-cogs"></i> <span>Services</span></a>
             </li>
+            <li class="{{(strpos(Route::getFacadeRoot()->current()->uri(),'backend/pricings') !== false)?'active':''}}">
+                <a href="/backend/pricings"><i class="fa fa-money"></i> <span>Pricing</span></a>
+            </li>
             <li class="{{(strpos(Route::getFacadeRoot()->current()->uri(),'backend/news')!== false)?'active':''}}">
                 <a href="/backend/news"><i class="fa fa-newspaper-o"></i> <span>News</span></a>
             </li>

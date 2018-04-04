@@ -24,17 +24,17 @@
                     </div>
                     <!-- /.box-header -->
                     @if(!empty($message))
-                    @if($success)
+                    @if($message['success'])
                     <div class="callout callout-info">
                         <h4>Success</h4>
 
-                        <p>{{$message}}</p>
+                        <p>{{$message['message']}}</p>
                     </div>
                     @else
                     <div class="callout callout-danger">
                         <h4>Error!</h4>
 
-                        <p>{{$message}}</p>
+                        <p>{{$message['message']}}</p>
                     </div>
                     @endif
                     @endif
@@ -49,6 +49,18 @@
                             <div class="form-group">
                                 <label for="img">Ảnh minh họa</label>
                                 <input type="file" id="img" name="img" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Mô tả</label>
+                                <textarea class="form-control" rows="5" name="description" id="description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Dịch vụ</label>
+                                <select class="form-control" name="service_id" style="width: 20%">
+                                    @foreach($services as $service)
+                                    <option value="{{$service->id}}">{{$service->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Ảnh/Video trong Album</label>

@@ -5,18 +5,16 @@
             <div class="widget_zone  four columns">
                 <aside id="widget_cosmo_tweets-2" class="widget">
                     <div class="tweets">
-                        <h5 class="widget-title"><span>Latest tweets</span></h5>
+                        <h5 class="widget-title"><span>Đánh giá dịch vụ</span></h5>
                         <div class="widget-delimiter">&nbsp;</div>
                         <div class="cosmo-twit-container static">
                             <div class="cosmo_twitter">
                                 <div class="slides_container">					
                                     <div class="tweet_item">
-                                        <p><i class="ion-social-twitter"></i>
-                                            @TecmoBowlers the documentation file is placed inside the full archive. Please download it from your ThemeForest Download section.								
+                                        <p><i class="ion-android-hangout"></i>
+                                            <i>Hình ảnh sắc nét, chất lượng, nhân viên phục vụ nhiệt tình. Tôi rất hài lòng về dịch vụ này của các bạn</i> 								
                                             <span class="tweet-time date st">
-                                                <a href="http://twitter.com" target="_blank" rel="nofollow">
-                                                    4 months  ago									
-                                                </a>
+                                                - chị Thanh -
                                             </span>
 
                                         </p>
@@ -24,16 +22,22 @@
 
                                     <div class="tweet_item">
                                         <p>								
-                                            <i class="ion-social-twitter"></i>
-                                            Updates for Tripod Photography Theme including Lightroom to WordPress plugin: 
-                                            <a href="https://t.co/CSNexWEwn9" target="_blank">https://t.co/CSNexWEwn9</a>								
+                                            <i class="ion-android-hangout"></i>
+                                            <i>Hình ảnh sắc nét, chất lượng, nhân viên phục vụ nhiệt tình, tâm lý. Chúc bạn ngày càng phát triển</i> 
                                             <span class="tweet-time date st">
-                                                <a href="http://twitter.com/" target="_blank" rel="nofollow">
-                                                    5 months  ago									
-                                                </a>
+                                                - anh Nam -	
                                             </span>
                                         </p>
-                                    </div>					  
+                                    </div>
+                                    <div class="tweet_item">
+                                        <p>								
+                                            <i class="ion-android-hangout"></i>
+                                            <i>Hình ảnh sắc nét, chất lượng, nhân viên phục vụ nhiệt tình</i> 
+                                            <span class="tweet-time date st">
+                                                - anh Nam -
+                                            </span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>   
                         </div>
@@ -103,18 +107,17 @@
             <div class="widget_zone  four columns">
                 <aside id="text-2" class="widget">
                     <div class="widget_text">
-                        <h5 class="widget-title"><span>Text widget</span></h5>
+                        <h5 class="widget-title"><span>Cam kết từ chúng tôi</span></h5>
                         <div class="widget-delimiter">&nbsp;</div>			
                         <div class="textwidget">
-                            <p>Quisque consectetur pretium risus, eu suscipit ligula tempor non. 
-                                Nulla facilisi. Suspendisse ac mi ut arcu interdum imperdiet a ut diam. Nulla vel mauris nulla. Sed dictum euismod fringilla.
+                            <p>Chúng tôi cam kết cho bạn những trải nghiệm cũng như những địch vụ tốt nhất của chúng tôi, sẽ cùng bạn lưu giữ những kỷ niệm đẹp
                             </p>
-                            <p>Ut ac nisi nunc consectetur pretium risus, eu suscipit ligula tempor non. Suspendisse ac mi ut arcu interdum imperdiet. Nunc neque.</p>
+                            <p>Mọi ý kiến phản hồi cũng như yêu cầu dịch vụ quý khách vui lòng liên hệ với chúng tôi trên trang web hoặc qua các hình thức dưới đây:</p>
                             <p>
-                                Address: <span style="color: #B5BBBF;">71 Lang Ha, Ha Noi</span> <br>
+                                Address: <span style="color: #B5BBBF;">136 Xuan Thuy, Ha Noi</span> <br>
                                 Phone: <span style="color: #B5BBBF;">+373 797 400 60</span> <br>
-                                Email: <a href="" title="Compose new message" rel="noreferrer"><span style="color: #B5BBBF;">support-shopay@appota.com</span> </a><br>
-                                Skype: <a href=""><span style="color: #B5BBBF;">shopay-carrier</span> </a>
+                                Email: <a href="" title="Compose new message" rel="noreferrer"><span style="color: #B5BBBF;">namph@gmail.com</span> </a><br>
+                                Skype: <a href=""><span style="color: #B5BBBF;">namph</span> </a>
                             </p>
                         </div>
                     </div>
@@ -145,3 +148,11 @@
         </div>
     </div>        
 </footer>
+<style>
+    .widget .ion-android-hangout{
+        font-size: 20px;
+        display: inline-block;
+        margin-right: 5px;
+        color: #e85a4f;
+    }
+</style>

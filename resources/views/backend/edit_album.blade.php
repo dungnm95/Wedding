@@ -24,17 +24,17 @@
                     </div>
                     <!-- /.box-header -->
                     @if(!empty($message))
-                    @if($success)
+                    @if($message['success'])
                     <div class="callout callout-info">
                         <h4>Success</h4>
 
-                        <p>{{$message}}</p>
+                        <p>{{$message['message']}}</p>
                     </div>
                     @else
                     <div class="callout callout-danger">
                         <h4>Error!</h4>
 
-                        <p>{{$message}}</p>
+                        <p>{{$message['message']}}</p>
                     </div>
                     @endif
                     @endif
@@ -48,8 +48,20 @@
                             </div>
                             <div class="form-group">
                                 <label for="img">Ảnh minh họa</label>
-                                <br/><img src="/{{$info->img}}" width="550" style="margin: 10px 0;"/>
+                                <br/><img src="/{{$info->img}}" width="250" style="margin: 10px 0;"/>
                                 <input type="file" id="img" name="img">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Mô tả</label>
+                                <textarea class="form-control" rows="5" name="description" id="description">{{$info->description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Dịch vụ</label>
+                                <select class="form-control" name="service_id" style="width: 20%">
+                                    @foreach($services as $service)
+                                    <option value="{{$service->id}}" {{($info->service_id == $service->id)?'selected':''}}>{{$service->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Ảnh/Video trong Album</label>
@@ -73,7 +85,7 @@
                                             </div>
                                             <div class="choose-video {{($dtl->type == 'img')?'hidden':''}}">
                                                 <label for="file_video">Video link</label>
-                                                <input class="form-control" type="text" id="file_video"  name="detail[video][]" value="{{$dtl->video_link}}">
+                                                <input class="form-control" type="text" id="file_video"  name="detail[video][]" value="https://www.youtube.com/watch?v={{$dtl->video_link}}">
                                             </div>
                                         </div>
                                         <div class="col-md-1">

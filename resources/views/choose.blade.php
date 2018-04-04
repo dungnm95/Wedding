@@ -14,7 +14,7 @@
                                 <i class="like-count like-58">23</i>
                             </span>
                         </div>
-                        <h1 class="post-title">Liên hệ</h1>
+                        <h1 class="post-title">Đặt hàng</h1>
                         <div class="excerpt">
                             <p>
                                 @if(!empty($message))
@@ -42,12 +42,15 @@
                                                 <label for="contact_phone">Điện thoại (bắt buộc)</label>
                                                 <input type="text" tabindex="3" size="22" value="" id="contact_phone" name="phone">
                                             </p>
+                                            <p class="content_phone input">
+                                                <label for="contact_phone"><b><i>Tôi muốn đặt gói {{$pricing->name}} của dịch vụ {{$pricing->service_name}} trị giá: {{number_format($pricing->price)}} Đ</i></b></label>
+                                            </p>
                                             <p class="content_message comment-form-comment textarea">
                                                 <label for="contact_phone">Ghi chú</label>
                                                 <textarea tabindex="4" rows="10" cols="100%" id="contact_message" name="message" style="min-height: 130px;"></textarea>
                                             </p>
                                             <p class="form-submit submit gray">
-                                                <input type="submit" value="Gửi tin nhắn" tabindex="5" id="submit" name="btn_submit">
+                                                <input type="submit" value="Đặt lịch" tabindex="5" id="submit" name="btn_submit">
                                             </p>
                                             <div class="container_msg"></div>
                                         </fieldset>

@@ -52,11 +52,6 @@
                                 <input type="file" id="img" name="img">
                             </div>
                             <div class="form-group">
-                                <label for="price">Giá thành</label>
-                                <input type="text" class="form-control" id="price" name="price" required value="{{$service->price}}">
-                            </div>
-
-                            <div class="form-group">
                                 <label>Hot service?</label>
                                 <select class="form-control" name="is_hot" style="width: 20%">
                                     <option value="no" {{($service->is_hot == 'no')?'selected':''}}>Không</option>

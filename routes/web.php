@@ -11,30 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('galleries', function () {
-    return view('galleries');
-});
-Route::get('gallery-detail', function () {
-    return view('gallery_detail');
-});
-Route::get('news', function () {
-    return view('news');
-});
-Route::get('news-detail', function () {
-    return view('news_detail');
-});
-Route::get('contact', function () {
-    return view('contact');
-});
-Route::get('pricing', function () {
-    return view('pricing');
-});
-Route::get('services', function () {
-    return view('services');
-});
+Route::get('/', 'AlbumController@home');
+Route::get('galleries', 'AlbumController@albums');
+Route::get('gallery-detail/{id}', 'AlbumController@album_detail');
+Route::get('news', 'NewsController@listNews');
+Route::get('news-detail/{id}', 'NewsController@newsDetail');
+Route::any('contact', 'ServiceController@contact');
+Route::get('pricing/{id}', 'ServiceController@pricing')->where('id', '[0-9]+');
+Route::any('choose_package/{id}', 'ServiceController@choose_package')->where('id', '[0-9]+');
+Route::get('services', 'ServiceController@list_services');
 Route::post('order', 'ServiceController@create_order');
 
 Route::group(['middleware' => 'web','prefix' => 'backend', 'namespace' => 'backend'], function($backend){
@@ -44,7 +29,7 @@ Route::group(['middleware' => 'web','prefix' => 'backend', 'namespace' => 'backe
     $backend->get('/register', 'AdminController@register');
     $backend->post('/create_account', 'AdminController@create_account');
     $backend->post('/check_login', 'AdminController@check_login');
-    $backend->post('/check_log', 'AdminController@check_log');
+    $backend->get('/check_log', 'AdminController@check_log');
     
     $backend->get('/albums', 'PageController@backend_list_album');
     $backend->any('/albums/add', 'PageController@backend_add_album');
@@ -55,6 +40,11 @@ Route::group(['middleware' => 'web','prefix' => 'backend', 'namespace' => 'backe
     $backend->any('/services/add', 'PageController@backend_add_service');
     $backend->any('/services/edit/{id}', 'PageController@backend_edit_service')->where('id', '[0-9]+');
     $backend->post('/services/delete/{id}', 'PageController@backend_delete_service')->where('id', '[0-9]+');
+    
+    $backend->get('/pricings', 'PageController@backend_list_pricing');
+    $backend->any('/pricings/add', 'PageController@backend_add_pricing');
+    $backend->any('/pricings/edit/{id}', 'PageController@backend_edit_pricing')->where('id', '[0-9]+');
+    $backend->post('/pricings/delete/{id}', 'PageController@backend_delete_pricing')->where('id', '[0-9]+');
     
     $backend->get('/news', 'PageController@backend_list_news');
     $backend->any('/news/add', 'PageController@backend_add_news');

@@ -7,69 +7,37 @@
     <div class="page-header pricing-header inline-aside row text-center" style="border: none;">
         <h1 class="page-title">Bảng giá</h1>	
         <span class="small-text">
-            <span style="color: #000; font-weight: 700;">Satisfaction Guaranteed.</span>
-            <br>We offer a 14 Day Money Back Guarantee.
+            <span style="color: #000; font-weight: 700;">Chúng tôi cung cấp những gói dịch vụ sau</span>
+            <br>Vui lòng chọn 1 gói dưới đây
         </span>
     </div><!-- .page-header -->
     <div id="primary" class="content-area pricing">
         <main id="main" class="site-main" role="main">
             <div class="pricing-block">
                 <div class="row">
-                    <article class="col-md-4">
-                        <h3>Single Theme</h3><div class="theme-price">
-                            <section class="price">
-                                <aside class="small-text">from</aside>
-                                <span>VND</span>30.000.000
-                            </section>
-                            <span class="small-text">one-off payment</span>
+                    @if(!empty($pricings))
+                    @foreach($pricings as $pricing)
+                    <div class="col-md-4" style="vertical-align: baseline;">
+                        <div style="min-height: 1400px">
+                            <h3>{{$pricing->name}}</h3><div class="theme-price">
+                                <section class="price">
+                                    <span>VND</span>{{number_format($pricing->price)}}
+                                </section>
+                                <span class="small-text">Bao gồm</span>
+                            </div>
+                            {!!$pricing->content!!}
                         </div>
-                        <ul>
-                            <li>One theme included</li>
-                            <li>12 months of theme updates</li>
-                            <li>12 months of premium support</li>
-                            <li>20% off future purchases</li>
-                            <li>Personal and commercial license</li>
-                            <li>Lifetime usage license</li>
-                            <li>Unlimited domain usage</li>
-                            <li>PSD files included</li>
-                            <a href="" class="button small">Select a theme</a>
-                        </ul>
-                    </article>
-                    <article class="col-md-4">
+                        <div>
+                            <ul>
+                                <a href="/choose_package/{{$pricing->id}}" class="button small">Chọn gói</a>
+                            </ul>
+                        </div>
 
-                        <h3>1 Year Membership</h3><div class="theme-price">
-                            <section class="price"><aside class="small-text">Most Popular</aside><span>VND</span>1.900.000</section>
-                            <span class="small-text">Billed annually</span>
-                        </div>
-                        <ul>
-                            <li>33 themes included</li>
-                            <li>12 months of theme updates</li>
-                            <li>12 months of premium support</li>
-                            <li>Access all themes</li>
-                            <li>Personal and commercial license</li>
-                            <li>Lifetime usage license</li>
-                            <li>Unlimited domain usage</li>
-                            <li>PSD files included</li>
-                            <a href="https://themeskingdom.com/checkout/?add-to-cart=62768" class="button small">Sign Up</a>
-                        </ul>
-                    </article>
-                    <article class="col-md-4">
-                        <h3>Lifetime Membership</h3><div class="theme-price">
-                            <section class="price"><span>VND</span>2.470.000</section>
-                            <span class="small-text">one-off payment</span>
-                        </div>
-                        <ul>
-                            <li>33 themes included</li>
-                            <li>All future themes</li>
-                            <li>Lifetime updates access</li>
-                            <li>Lifetime premium support</li>
-                            <li>Personal and commercial license</li>
-                            <li>Lifetime usage license</li>
-                            <li>Unlimited domain usage</li>
-                            <li>PSD files included</li>
-                            <a href="https://themeskingdom.com/checkout/?add-to-cart=63334" class="button small">Sign Up</a>
-                        </ul>
-                    </article>
+
+                    </div>
+
+                    @endforeach
+                    @endif
                 </div><!-- .row -->
             </div><!-- .pricing-block -->
         </main><!-- #main -->

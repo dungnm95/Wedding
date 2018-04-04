@@ -34,13 +34,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(!empty(logs) || logs != null)
+                                @if(!empty($logs) || $logs != null)
                                 @foreach($logs as $log)
                                 <tr>
                                     <td>{{$log->name}}</td>
                                     <td>{{$log->username}}</td>
                                     <td>{{$log->action}}</td>
-                                    <td>{{date('d/m/Y H:i:s', $log->username)}}</td>
+                                    <td>{{date('d/m/Y H:i:s', $log->time)}}</td>
                                 </tr>
                                 @endforeach
                                 @else

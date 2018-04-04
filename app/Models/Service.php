@@ -27,4 +27,34 @@ class Service {
         DB::table('services')->where('id', $id)->delete();
     }
 
+    public static function list_service_pricing() {
+        return DB::table('pricings')->get();
+    }
+
+    public static function infoPricing($id) {
+        return DB::table('pricings')->where('id', $id)->first();
+    }
+
+    public static function infoPricingByService($service_id) {
+        return DB::table('pricings')->where('service_id', $service_id)->get();
+    }
+
+    public static function insertServicePricing($param) {
+        return DB::table('pricings')->insert($param);
+    }
+
+    public static function updateServicePricing($id, $param) {
+        return DB::table('pricings')->where('id', $id)->update($param);
+    }
+
+    public static function deleteServicePricing($id) {
+        DB::table('pricings')->where('id', $id)->delete();
+    }
+
+    public static function saveOrder($param) {
+        return DB::table('orders')->insert($param);
+    }
+    public static function saveContact($param) {
+        return DB::table('contacts')->insert($param);
+    }
 }

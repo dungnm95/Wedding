@@ -20,7 +20,11 @@ class Album {
     }
 
     public static function infoAlbum($id) {
-        return DB::table('albums')->select('id', 'title', 'img')->where('id', $id)->first();
+        return DB::table('albums')->select('id', 'title', 'img','service_id','description')->where('id', $id)->first();
+    }
+    
+    public static function allInfoAlbum($id) {
+        return DB::table('albums')->where('id', $id)->first();
     }
 
     public static function infoAlbumDetail($album_id) {
@@ -41,4 +45,10 @@ class Album {
         DB::table('albums')->where('id', $album_id)->delete();
     }
 
+    public static function getNewAlbum() {
+        return DB::table('albums')->orderBy('created_time','desc')->limit(6)->get();
+    }
+    public static function getAlbumPagination() {
+        return DB::table('albums')->orderBy('created_time','desc')->paginate(9);
+    }
 }

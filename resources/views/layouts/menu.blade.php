@@ -32,33 +32,22 @@
                                     <a href="home_wedding.html">Trang Chủ</a>
                                 </li>
                                 <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
+                                <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing/*') || Request::is('choose_package/*') || Request::is('services'))? 'selected':''}} menu-item-180  no_description"><a href="/services">Dịch vụ</a></li>
                                 <li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('news'))? 'selected':''}} menu-item-has-children menu-item-183  no_description"><a href="/news">Tin tức</a></li>
-                                <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing'))? 'selected':''}} menu-item-180  no_description"><a href="/pricing">Bảng giá</a></li>
-                                <li id="menu-item-193" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('contact') || Request::is('services'))? 'selected':''}} menu-item-has-children menu-item-193  no_description"><a href="">Options</a>
-                                    <ul class="children">
-                                        <li id="menu-item-204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-204  no_description"><a href="ContactUs.html">Contact Us</a></li>
-                                        <li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206  no_description"><a href="Services.html">Our Services</a></li>
-                                    </ul><div class="clear"></div>
-                                </li>
-                                
+                                <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('contact'))? 'selected':''}} menu-item-180  no_description"><a href="/contact">Liên hệ</a></li>
                             </ul>
                             <div class="clear"></div>
                         </nav>
                     </div>
                     <nav class="main-menu cosmo-menu align-middle" style="margin-top: 1px;">
                         <ul id="menu-main-menu-1" class="sf-menu sf-js-enabled">
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description"><a href="home_wedding.html" class="sf-with-ul">Trang chủ</a></li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries" class="sf-with-ul">Album Ảnh</a></li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('news'))? 'selected':''}} menu-item-has-children menu-item-183  no_description"><a href="/news" class="sf-with-ul">Tin tức</a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing'))? 'selected':''}} menu-item-180  no_description"><a href="/pricing">Bảng giá</a></li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('contact') || Request::is('services'))? 'selected':''}} menu-item-has-children menu-item-193  no_description"><a href="" class="sf-with-ul">Options<span class="sf-sub-indicator"> + </span></a>
-                                <ul class="children" style="float: none; width: 16.5455em; display: none; visibility: hidden;">
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-204  no_description"><a href="ContactUs.html">Contact Us</a></li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206  no_description"><a href="Services.html">Our Services</a></li>
-                                </ul>
-                                <div class="clear"></div>
+                            <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description">
+                                <a href="home_wedding.html">Trang Chủ</a>
                             </li>
-                            
+                            <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
+                            <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing/*') || Request::is('choose_package/*') || Request::is('services'))? 'selected':''}} menu-item-180  no_description"><a href="/services">Dịch vụ</a></li>
+                            <li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('news'))? 'selected':''}} menu-item-has-children menu-item-183  no_description"><a href="/news">Tin tức</a></li>
+                            <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('contact'))? 'selected':''}} menu-item-180  no_description"><a href="/contact">Liên hệ</a></li>
                         </ul>
                         <div class="clear"></div>
                     </nav> 
@@ -110,34 +99,26 @@
                 <div id="modal-menu" class="modal-menu">
                     <nav class="main-menu cosmo-menu align-middle" style="margin-top: 19px;">
                         <ul id="menu-main-menu" class="mobile-menu">
-                            <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description"><a href="/">Trang Chủ</a></li>
-                            <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
-                            <li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('news'))? 'selected':''}} menu-item-has-children menu-item-183  no_description"><a href="">Blog</a></li>
-                            <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing'))? 'selected':''}} menu-item-180  no_description"><a href="/pricing">Bảng giá</a></li>
-                            <li id="menu-item-193" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('contact') || Request::is('services'))? 'selected':''}} menu-item-has-children menu-item-193  no_description"><a href="">Options</a>
-                                <ul class="children">
-                                    <li id="menu-item-204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-204  no_description"><a href="ContactUs.html">Contact Us</a></li>
-                                    <li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206  no_description"><a href="Services.html">Our Services</a></li>
-                                 </ul><div class="clear"></div>
+                            <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description">
+                                <a href="home_wedding.html">Trang Chủ</a>
                             </li>
-                            
+                            <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
+                            <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing/*') || Request::is('choose_package/*') || Request::is('services'))? 'selected':''}} menu-item-180  no_description"><a href="/services">Dịch vụ</a></li>
+                            <li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('news'))? 'selected':''}} menu-item-has-children menu-item-183  no_description"><a href="/news">Tin tức</a></li>
+                            <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('contact'))? 'selected':''}} menu-item-180  no_description"><a href="/contact">Liên hệ</a></li>
                         </ul>
                         <div class="clear"></div>
                     </nav>
                 </div>
                 <nav class="main-menu cosmo-menu align-middle" style="margin-top: 1px;">
                     <ul id="menu-main-menu-1" class="sf-menu sf-js-enabled">
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description"><a href="/" class="sf-with-ul">Trang chủ</a></li>
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries" class="sf-with-ul">Album Ảnh</a></li>
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('news'))? 'selected':''}} menu-item-has-children menu-item-183  no_description"><a href="/news" class="sf-with-ul">Tin tức</a></li>
-                        <li class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing'))? 'selected':''}} menu-item-180  no_description"><a href="/pricing">Bảng giá</a></li>
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('contact') || Request::is('services'))? 'selected':''}} menu-item-has-children menu-item-193  no_description"><a href="" class="sf-with-ul">Options<span class="sf-sub-indicator"> + </span></a>
-                            <ul class="children" style="float: none; width: 16.5455em; display: none; visibility: hidden;">
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-204  no_description"><a href="/contact">Contact Us</a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206  no_description"><a href="/services">Our Services</a></li>
-                            </ul><div class="clear"></div>
+                        <li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page  {{(Request::is('/'))? 'selected':''}}  page_item page-item-50 current_page_item menu-item-has-children menu-item-184  first no_description">
+                            <a href="home_wedding.html">Trang Chủ</a>
                         </li>
-                        
+                        <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('galleries'))? 'selected':''}} menu-item-has-children menu-item-191  no_description"><a href="/galleries">Album Ảnh</a></li>
+                        <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('pricing/*') || Request::is('choose_package/*') || Request::is('services'))? 'selected':''}} menu-item-180  no_description"><a href="/services">Dịch vụ</a></li>
+                        <li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page {{(Request::is('news'))? 'selected':''}} menu-item-has-children menu-item-183  no_description"><a href="/news">Tin tức</a></li>
+                        <li id="menu-item-180" class="menu-item menu-item-type-custom menu-item-object-custom {{(Request::is('contact'))? 'selected':''}} menu-item-180  no_description"><a href="/contact">Liên hệ</a></li>
                     </ul>
                     <div class="clear"></div>
                 </nav>

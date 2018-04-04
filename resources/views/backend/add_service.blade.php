@@ -50,10 +50,6 @@
                                 <label for="img">Ảnh mô tả</label>
                                 <input type="file" id="img" name="img">
                             </div>
-                            <div class="form-group">
-                                <label for="price">Giá thành</label>
-                                <input type="text" class="form-control" id="price" name="price" required>
-                            </div>
 
                             <div class="form-group">
                                 <label>Hot service?</label>

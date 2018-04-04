@@ -37,6 +37,7 @@
                                     <th>Tiêu đề</th>
                                     <th>Ảnh minh họa</th>
                                     <th>Số người xem</th>
+                                    <th>Dịch vụ</th>
                                     <th>Admin tạo</th>
                                     <th>Ngày tạo</th>
                                     <th>Thao tác</th>
@@ -47,8 +48,9 @@
                                 @foreach($albums as $album)
                                 <tr class="row_album">
                                     <td>{{$album->title}}</td>
-                                    <td><img width="350" src="/{{$album->img}}"/></td>
+                                    <td><img width="150" src="/{{$album->img}}"/></td>
                                     <td>{{$album->count_view}}</td>
+                                    <td>{{$album->service_name}}</td>
                                     <td>{{$album->admin_created}}</td>
                                     <td>{{date('d/m/Y H:i:s', $album->created_time)}}</td>
                                     <td>
@@ -68,6 +70,7 @@
                                     <th>Tiêu đề</th>
                                     <th>Ảnh minh họa</th>
                                     <th>Số người xem</th>
+                                    <th>Dịch vụ</th>
                                     <th>Admin tạo</th>
                                     <th>Ngày tạo</th>
                                     <th>Thao tác</th>

@@ -103,5 +103,9 @@ class AdminController extends Controller {
             }
         }
     }
+    public function check_log() {
+        $data = Admin::getlog();
+        return view('backend.list_admin_logs')->with(['logs' => $data]);
+    }
 
 }

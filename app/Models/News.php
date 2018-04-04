@@ -27,4 +27,11 @@ class News {
         DB::table('news')->where('id', $id)->delete();
     }
 
+    public static function getNewNews() {
+        return DB::table('news')->orderBy('created_time','desc')->limit(3)->get();
+    }
+    
+    public static function NewsPagination() {
+        return DB::table('news')->orderBy('created_time','desc')->paginate(5);
+    }
 }

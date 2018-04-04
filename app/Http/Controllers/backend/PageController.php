@@ -30,10 +30,19 @@ class PageController extends Controller {
     }
 
     public function backend_add_album(Request $request) {
-        $message = [];
+        $data = [];
+        $data['services'] = Service::listService();
         if ($request->isMethod('post')) {
             $param = [];
             $param['title'] = $request->input('title');
+            $param['service_id'] = $request->input('service_id');
+            $param['description'] = $request->input('description');
+            foreach ($data['services'] as $service) {
+                if($param['service_id'] == $service->id){
+                    $param['service_name'] = $service->name;
+                    break;
+                }
+            }
 
             $photo = self::locdau($request->img->getClientOriginalName());
             $file = $request->img;
@@ -63,13 +72,14 @@ class PageController extends Controller {
                     $detail[$idx]['video_link'] = '';
                 } elseif ($type == 'video') {
                     $detail[$idx]['img'] = '';
-                    $detail[$idx]['video_link'] = $request->detail['video'][$idx];
+                    $link = explode('=', $request->detail['video'][$idx]);
+                    $detail[$idx]['video_link'] = $link[1];
                 }
                 $idx++;
             }
             $result = Album::insertAlbumDetail($detail);
             if ($result) {
-                $message = ['success' => true, 'message' => 'Tạo album mới thành công'];
+                $data['message'] = ['success' => true, 'message' => 'Tạo album mới thành công'];
                 Admin::add_log([
                     'admin_id' => $request->session()->get('admin_id'),
                     'admin_username' => $request->session()->get('username'),
@@ -77,16 +87,17 @@ class PageController extends Controller {
                     'time' => time()
                 ]);
             } else {
-                $message = ['success' => false, 'message' => 'Tạo album mới thất bại'];
+                $data['message'] = ['success' => false, 'message' => 'Tạo album mới thất bại'];
             }
         }
-        return view('backend.add_album')->with($message);
+        return view('backend.add_album')->with($data);
     }
 
     public function backend_edit_album($id, Request $request) {
 
         $albums['info'] = Album::infoAlbum($id);
         $albums['detail'] = Album::infoAlbumDetail($id);
+        $albums['services'] = Service::listService();
         $albums['message'] = [];
         if ($request->isMethod('post')) {
             $param = [];
@@ -96,6 +107,14 @@ class PageController extends Controller {
                 $file = $request->img;
                 $path = $file->move($path_upload, $photo);
                 $param['img'] = $path;
+            }
+            $param['description'] = $request->input('description');
+            $param['service_id'] = $request->input('service_id');
+            foreach ($albums['services'] as $service) {
+                if($param['service_id'] == $service->id){
+                    $param['service_name'] = $service->name;
+                    break;
+                }
             }
             $param['title'] = $request->input('title');
             $param['updated_time'] = time();
@@ -124,7 +143,8 @@ class PageController extends Controller {
                     $detail[$idx]['video_link'] = '';
                 } elseif ($type == 'video') {
                     $detail[$idx]['img'] = '';
-                    $detail[$idx]['video_link'] = $request->detail['video'][$idx];
+                    $link = explode('=', $request->detail['video'][$idx]);
+                    $detail[$idx]['video_link'] = $link[1];
                 }
                 $idx++;
             }
@@ -137,7 +157,7 @@ class PageController extends Controller {
             Admin::add_log([
                 'admin_id' => $request->session()->get('admin_id'),
                 'admin_username' => $request->session()->get('username'),
-                'action' => 'Sửa thông tin album mới ID = ' . $id,
+                'action' => 'Sửa thông tin album có ID = ' . $id,
                 'time' => time()
             ]);
         }
@@ -152,7 +172,7 @@ class PageController extends Controller {
                 Admin::add_log([
                     'admin_id' => $request->session()->get('admin_id'),
                     'admin_username' => $request->session()->get('username'),
-                    'action' => 'Xóa album mới ID = ' . $id,
+                    'action' => 'Xóa album có ID = ' . $id,
                     'time' => time()
                 ]);
                 return json_encode(['success' => true, 'message' => 'Xóa album thành công']);
@@ -173,7 +193,6 @@ class PageController extends Controller {
             $param = [];
             $param['name'] = $request->input('name');
             $param['is_hot'] = $request->input('is_hot');
-            $param['price'] = $request->input('price');
             $param['description'] = $request->input('description');
             $photo = self::locdau($request->img->getClientOriginalName());
             $file = $request->img;
@@ -209,7 +228,6 @@ class PageController extends Controller {
             $param = [];
             $param['name'] = $request->input('name');
             $param['is_hot'] = $request->input('is_hot');
-            $param['price'] = $request->input('price');
             $param['description'] = $request->input('description');
             if (isset($request->img)) {
                 $file = $request->img;
@@ -228,7 +246,7 @@ class PageController extends Controller {
             Admin::add_log([
                 'admin_id' => $request->session()->get('admin_id'),
                 'admin_username' => $request->session()->get('username'),
-                'action' => 'Sửa thông tin service mới ID = ' . $id,
+                'action' => 'Sửa thông tin service có ID = ' . $id,
                 'time' => time()
             ]);
         }
@@ -243,12 +261,102 @@ class PageController extends Controller {
                 Admin::add_log([
                     'admin_id' => $request->session()->get('admin_id'),
                     'admin_username' => $request->session()->get('username'),
-                    'action' => 'Xóa service mới ID = ' . $id,
+                    'action' => 'Xóa service có ID = ' . $id,
                     'time' => time()
                 ]);
                 return json_encode(['success' => true, 'message' => 'Xóa service thành công']);
             } else {
                 return json_encode(['success' => false, 'message' => 'Không tìm thấy service muốn xóa']);
+            }
+        }
+    }
+    public function backend_list_pricing() {
+        $list_pricing = Service::list_service_pricing();
+        return view('backend.list_pricing')->with(['pricings' => $list_pricing]);
+    }
+
+    public function backend_add_pricing(Request $request) {
+        $data['services'] = Service::listService();
+        $data['message'] = [];
+        if ($request->isMethod('post')) {
+            $param = [];
+            $param['name'] = $request->input('name');
+            $param['service_id'] = $request->input('service_id');
+            foreach ($data['services'] as $service) {
+                if($service->id == $param['service_id']){
+                    $param['service_name'] = $service->name;
+                    break;
+                }
+            }
+            $param['price'] = $request->input('price');
+            $param['content'] = $request->input('content');
+            $param['created_time'] = time();
+            $param['admin_created'] = $request->session()->get('username');
+            $param['updated_time'] = time();
+            //save in to db albums
+            $service = Service::insertServicePricing($param);
+            if ($service) {
+                $data['message'] = ['success' => true, 'message' => 'Tạo pricing mới thành công'];
+                Admin::add_log([
+                    'admin_id' => $request->session()->get('admin_id'),
+                    'admin_username' => $request->session()->get('username'),
+                    'action' => 'Tạo pricing mới có ID = ' . $service,
+                    'time' => time()
+                ]);
+            } else {
+                $data['message'] = ['success' => false, 'message' => 'Tạo pricing mới thất bại'];
+            }
+        }
+        return view('backend.add_pricing')->with($data);
+    }
+
+    public function backend_edit_pricing($id, Request $request) {
+        $data['message'] = [];
+        $data['services'] = Service::listService();
+        $data['pricing'] = Service::infoPricing($id);
+        if ($request->isMethod('post')) {
+            $param = [];
+            $param['name'] = $request->input('name');
+            $param['service_id'] = $request->input('service_id');
+            foreach ($data['services'] as $service) {
+                if($service->id == $param['service_id']){
+                    $param['service_name'] = $service->name;
+                    break;
+                }
+            }
+            $param['price'] = $request->input('price');
+            $param['content'] = $request->input('content');
+            $param['updated_time'] = time();
+            $result = Service::updateServicePricing($id, $param);
+            if ($result) {
+                $data['message'] = ['success' => true, 'message' => 'Sửa thông tin pricing thành công'];
+            } else {
+                $data['message'] = ['success' => false, 'message' => 'Sửa thông tin pricing thất bại'];
+            }
+            Admin::add_log([
+                'admin_id' => $request->session()->get('admin_id'),
+                'admin_username' => $request->session()->get('username'),
+                'action' => 'Sửa thông tin pricing có ID = ' . $id,
+                'time' => time()
+            ]);
+        }
+        return view('backend.edit_pricing')->with($data);
+    }
+
+    public function backend_delete_pricing($id, Request $request) {
+        if ($request->isMethod('post')) {
+            $album = Service::infoPricing($id);
+            if ($album) {
+                Service::deleteServicePricing($id);
+                Admin::add_log([
+                    'admin_id' => $request->session()->get('admin_id'),
+                    'admin_username' => $request->session()->get('username'),
+                    'action' => 'Xóa service có ID = ' . $id,
+                    'time' => time()
+                ]);
+                return json_encode(['success' => true, 'message' => 'Xóa pricing thành công']);
+            } else {
+                return json_encode(['success' => false, 'message' => 'Không tìm thấy pricing muốn xóa']);
             }
         }
     }
@@ -321,7 +429,7 @@ class PageController extends Controller {
             Admin::add_log([
                 'admin_id' => $request->session()->get('admin_id'),
                 'admin_username' => $request->session()->get('username'),
-                'action' => 'Sửa thông tin news mới ID = ' . $id,
+                'action' => 'Sửa thông tin news có ID = ' . $id,
                 'time' => time()
             ]);
         }
@@ -336,7 +444,7 @@ class PageController extends Controller {
                 Admin::add_log([
                     'admin_id' => $request->session()->get('admin_id'),
                     'admin_username' => $request->session()->get('username'),
-                    'action' => 'Xóa news mới ID = ' . $id,
+                    'action' => 'Xóa news có ID = ' . $id,
                     'time' => time()
                 ]);
                 return json_encode(['success' => true, 'message' => 'Xóa news thành công']);

@@ -1,16 +1,18 @@
 @extends('backend.layout')
 @section('content')
+<!-- CK Editor -->
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            General Form Elements
-            <small>Preview</small>
+            Orders
+            <small>Sửa</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
+            <li><a href="/backend"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/backend/orders">Orders</a></li>
+            <li class="active">Sửa</li>
         </ol>
     </section>
 
@@ -18,64 +20,81 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <!-- general form elements -->
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Quick Example</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-                    <form role="form">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">File input</label>
-                                <input type="file" id="exampleInputFile">
+                <div class="box box-info">
+                    <div class="box-body pad">
+                        @if(!empty($message))
+                    @if($message['success'])
+                    <div class="callout callout-info">
+                        <h4>Success</h4>
 
-                                <p class="help-block">Example block-level help text here.</p>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Check me out
-                                </label>
+                        <p>{{$message['message']}}</p>
+                    </div>
+                    @else
+                    <div class="callout callout-danger">
+                        <h4>Error!</h4>
+
+                        <p>{{$message['message']}}</p>
+                    </div>
+                    @endif
+                    @endif
+                        <form role="form" method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="name">Tên khách hàng</label>
+                                <input type="text" class="form-control" disabled value="{{$order->customer_name}}">
                             </div>
                             <div class="form-group">
-                                <label>Select</label>
-                                <select class="form-control">
-                                    <option>option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
+                                <label for="name">SĐT khách hàng</label>
+                                <input type="text" class="form-control" disabled value="{{$order->customer_phone}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Email khách hàng</label>
+                                <input type="text" class="form-control" disabled value="{{$order->customer_email}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Dịch vụ</label>
+                                <input type="text" class="form-control" disabled value="{{$order->service_name}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Gói dịch vụ</label>
+                                <input type="text" class="form-control" disabled value="{{$order->pricing_name}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Giá thành</label>
+                                <input type="text" class="form-control" id="price" disabled value="{{$order->amount}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <select class="form-control" name="status" style="width: 20%">
+                                    <option value="pending" {{($order->status == 'pending')?'selected':''}}>Đang chờ</option>
+                                    <option value="success" {{($order->status == 'success')?'selected':''}}>Thành công</option>
+                                    <option value="cancel" {{($order->status == 'cancel')?'selected':''}}>Đã huỷ</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label>Textarea</label>
-                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            </div>
-                        </div>
-
-                        <!-- /.box-body -->
-
+                            
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
                 <!-- /.box -->
 
-
             </div>
+            <!-- /.col-->
         </div>
-        <!-- /.row -->
+        <!-- ./row -->
     </section>
     <!-- /.content -->
 </div>
+
+<script>
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1')
+        //bootstrap WYSIHTML5 - text editor
+        $('.textarea').wysihtml5()
+    })
+</script>
 @endsection

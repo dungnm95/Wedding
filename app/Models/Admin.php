@@ -26,6 +26,6 @@ class Admin {
     }
     
     public static function getlog() {
-        return DB::table('admin_logs')->join('admins', 'admins.id', '=', 'admin_logs.admin_id')->select('admins.name', 'admins.username', 'admin_logs.action', 'admin_logs.time')->get();
+        return DB::table('admin_logs')->join('admins', 'admins.id', '=', 'admin_logs.admin_id')->select('admins.name', 'admins.username', 'admin_logs.action', 'admin_logs.time')->orderBy('time','desc')->get();
     }
 }

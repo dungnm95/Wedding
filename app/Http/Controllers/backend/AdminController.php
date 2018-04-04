@@ -9,6 +9,8 @@ use Validator;
 use Auth;
 use App\Models\Admin;
 use Illuminate\Support\MessageBag;
+use App\Models\Order;
+use App\Models\Contact;
 
 class AdminController extends Controller {
 
@@ -105,7 +107,9 @@ class AdminController extends Controller {
     }
     public function check_log() {
         $data = Admin::getlog();
-        return view('backend.list_admin_logs')->with(['logs' => $data]);
+        $unread_mess = Contact::countUnreadContact();
+        $new_order = Order::countNewOrder();
+        return view('backend.list_admin_logs')->with(['logs' => $data, 'new_contact' => $unread_mess, 'new_order' => $new_order]);
     }
 
 }

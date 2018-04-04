@@ -34,6 +34,7 @@ class ServiceController extends Controller {
                 $param['customer_phone'] = $request->input('phone');
                 $param['message'] = $request->input('message', '');
                 $param['pricing_id'] = $pricing_id;
+                $param['pricing_name'] = $pricing->name;
                 $param['service_id'] = $pricing->service_id;
                 $param['service_name'] = $pricing->service_name;
                 $param['amount'] = $pricing->price;

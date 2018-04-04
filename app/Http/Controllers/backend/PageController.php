@@ -10,35 +10,49 @@ use App\Models\Album;
 use App\Models\Service;
 use App\Models\Admin;
 use App\Models\News;
+use App\Models\Order;
+use App\Models\Contact;
 use Session;
 
 class PageController extends Controller {
+
+    protected $unread_mess;
+    protected $new_order;
 
     public function __construct() {
         if (!Session::has('username') || !Session::has('admin_id') || !Session::has('admin_name')) {
             return redirect('/backend/login')->send();
         }
+        $this->unread_mess = Contact::countUnreadContact();
+        $this->new_order = Order::countNewOrder();
     }
 
     public function index() {
-        return view('backend.index');
+        $data = ['new_contact' => $this->unread_mess, 'new_order' => $this->new_order];
+        $data['total_amount'] = Order::sumAmountOrder();
+        $data['total_order'] = Order::countOrder();
+        $data['revenue_chart'] = json_encode(Order::drawRevenueChart());
+        $data['order_chart'] = json_encode(Order::drawOrderChart());
+        return view('backend.index')->with($data);
     }
 
     public function backend_list_album() {
         $list_album = Album::listAlbum();
-        return view('backend.list_album')->with(['albums' => $list_album]);
+        return view('backend.list_album')->with(['albums' => $list_album, 'new_contact' => $this->unread_mess, 'new_order' => $this->new_order]);
     }
 
     public function backend_add_album(Request $request) {
         $data = [];
         $data['services'] = Service::listService();
+        $data['new_contact'] = $this->unread_mess;
+        $data['new_order'] = $this->new_order;
         if ($request->isMethod('post')) {
             $param = [];
             $param['title'] = $request->input('title');
             $param['service_id'] = $request->input('service_id');
             $param['description'] = $request->input('description');
             foreach ($data['services'] as $service) {
-                if($param['service_id'] == $service->id){
+                if ($param['service_id'] == $service->id) {
                     $param['service_name'] = $service->name;
                     break;
                 }
@@ -99,6 +113,8 @@ class PageController extends Controller {
         $albums['detail'] = Album::infoAlbumDetail($id);
         $albums['services'] = Service::listService();
         $albums['message'] = [];
+        $albums['new_contact'] = $this->unread_mess;
+        $albums['new_order'] = $this->new_order;
         if ($request->isMethod('post')) {
             $param = [];
             $path_upload = 'uploads/albums/';
@@ -111,7 +127,7 @@ class PageController extends Controller {
             $param['description'] = $request->input('description');
             $param['service_id'] = $request->input('service_id');
             foreach ($albums['services'] as $service) {
-                if($param['service_id'] == $service->id){
+                if ($param['service_id'] == $service->id) {
                     $param['service_name'] = $service->name;
                     break;
                 }
@@ -184,11 +200,13 @@ class PageController extends Controller {
 
     public function backend_list_service() {
         $list_service = Service::listService();
-        return view('backend.list_service')->with(['services' => $list_service]);
+        return view('backend.list_service')->with(['services' => $list_service, 'new_contact' => $this->unread_mess, 'new_order' => $this->new_order]);
     }
 
     public function backend_add_service(Request $request) {
         $message = [];
+        $message['new_contact'] = $this->unread_mess;
+        $message['new_order'] = $this->new_order;
         if ($request->isMethod('post')) {
             $param = [];
             $param['name'] = $request->input('name');
@@ -224,6 +242,8 @@ class PageController extends Controller {
     public function backend_edit_service($id, Request $request) {
         $data['message'] = [];
         $data['service'] = Service::infoService($id);
+        $data['new_contact'] = $this->unread_mess;
+        $data['new_order'] = $this->new_order;
         if ($request->isMethod('post')) {
             $param = [];
             $param['name'] = $request->input('name');
@@ -270,20 +290,23 @@ class PageController extends Controller {
             }
         }
     }
+
     public function backend_list_pricing() {
         $list_pricing = Service::list_service_pricing();
-        return view('backend.list_pricing')->with(['pricings' => $list_pricing]);
+        return view('backend.list_pricing')->with(['pricings' => $list_pricing, 'new_contact' => $this->unread_mess, 'new_order' => $this->new_order]);
     }
 
     public function backend_add_pricing(Request $request) {
         $data['services'] = Service::listService();
         $data['message'] = [];
+        $data['new_contact'] = $this->unread_mess;
+        $data['new_order'] = $this->new_order;
         if ($request->isMethod('post')) {
             $param = [];
             $param['name'] = $request->input('name');
             $param['service_id'] = $request->input('service_id');
             foreach ($data['services'] as $service) {
-                if($service->id == $param['service_id']){
+                if ($service->id == $param['service_id']) {
                     $param['service_name'] = $service->name;
                     break;
                 }
@@ -314,12 +337,14 @@ class PageController extends Controller {
         $data['message'] = [];
         $data['services'] = Service::listService();
         $data['pricing'] = Service::infoPricing($id);
+        $data['new_contact'] = $this->unread_mess;
+        $data['new_order'] = $this->new_order;
         if ($request->isMethod('post')) {
             $param = [];
             $param['name'] = $request->input('name');
             $param['service_id'] = $request->input('service_id');
             foreach ($data['services'] as $service) {
-                if($service->id == $param['service_id']){
+                if ($service->id == $param['service_id']) {
                     $param['service_name'] = $service->name;
                     break;
                 }
@@ -363,11 +388,13 @@ class PageController extends Controller {
 
     public function backend_list_news() {
         $news = News::listNews();
-        return view('backend.list_news')->with(['news' => $news]);
+        return view('backend.list_news')->with(['news' => $news, 'new_contact' => $this->unread_mess, 'new_order' => $this->new_order]);
     }
 
     public function backend_add_news(Request $request) {
         $message = [];
+        $message['new_contact'] = $this->unread_mess;
+        $message['new_order'] = $this->new_order;
         if ($request->isMethod('post')) {
             $param = [];
             $param['title'] = $request->input('title');
@@ -405,6 +432,8 @@ class PageController extends Controller {
     public function backend_edit_news($id, Request $request) {
         $data['message'] = [];
         $data['news'] = News::infoNews($id);
+        $data['new_contact'] = $this->unread_mess;
+        $data['new_order'] = $this->new_order;
         if ($request->isMethod('post')) {
             $param = [];
             $param['title'] = $request->input('title');
@@ -455,19 +484,46 @@ class PageController extends Controller {
     }
 
     public function backend_list_order() {
-        return view('backend.list_order');
+        $orders = Order::listOrders();
+        return view('backend.list_order')->with(['orders' => $orders, 'new_contact' => $this->unread_mess, 'new_order' => $this->new_order]);
     }
 
     public function backend_edit_order($id, Request $request) {
-        return view('backend.edit_order');
+        $message = [];
+        $order = Order::orderInfo($id);
+        if ($order) {
+            if ($request->isMethod('post')) {
+                $param['status'] = $request->input('status');
+                $param['admin_updated'] = $request->session()->get('username');
+                $param['updated_time'] = time();
+                $update = Order::saveOrder($id, $param);
+                if ($update) {
+                    Admin::add_log([
+                        'admin_id' => $request->session()->get('admin_id'),
+                        'admin_username' => $request->session()->get('username'),
+                        'action' => 'Thay đổi trạng thái hoá đơn có ID = ' . $id,
+                        'time' => time()
+                    ]);
+                    $message = ['success' => true, 'message' => 'Thay đổi trạng thái hoá đơn thành công'];
+                } else {
+                    $message = ['success' => false, 'message' => 'Thay đổi trạng thái hoá đơn thất bại'];
+                }
+            }
+        } else {
+            $message = ['success' => false, 'message' => 'Không tìm thấy order'];
+        }
+        return view('backend.edit_order')->with(['order' => $order, 'message' => $message, 'new_contact' => $this->unread_mess, 'new_order' => $this->new_order]);
     }
 
     public function backend_list_contact() {
-        return view('backend.list_contact');
+        $contacts = Contact::listContacts();
+        return view('backend.list_contact')->with(['contacts' => $contacts, 'new_contact' => $this->unread_mess, 'new_order' => $this->new_order]);
     }
 
     public function backend_view_contact($id) {
-        return view('backend.view_contact');
+        Contact::updateContact($id);
+        $contact = Contact::infoContact($id);
+        return view('backend.view_contact')->with(['contact' => $contact, 'new_contact' => $this->unread_mess, 'new_order' => $this->new_order]);
     }
 
     public function locdau($string) {
